@@ -114,6 +114,8 @@ void RR(const vector<pair<int,string>>& jobList,const vector<pair<int,string>>& 
     
         if(arrive.size() != 0) AT = stoi(arrive[jobNum].second);
         if(Response[jobNum] == -1) Response[jobNum] = runFor - AT; // 1st cpu access - arrival
+        
+        cout<<"  [time  "<<runFor;
 
         if(runtime > quantum){
             runtime -= quantum;
@@ -125,7 +127,7 @@ void RR(const vector<pair<int,string>>& jobList,const vector<pair<int,string>>& 
             Turnaround[jobNum] = runFor - AT; // completion - arrival
             Wait[jobNum] = (runFor - AT) - stoi(jobList[jobNum].second); // TAT - jobRuntime
         }
-        cout<<jobNum+1<<" "<<runFor<<" "<<AT<<endl;
+        
         for(int i=count; i<jobList.size();){
             int arrTime = 0, jN = jobList[i].first;
             if(arrive.size() != 0) arrTime =  stoi(arrive[jN].second);
@@ -137,6 +139,8 @@ void RR(const vector<pair<int,string>>& jobList,const vector<pair<int,string>>& 
         }
 
         if(runtime != 0) readyQ.push({jobNum,runtime});
+
+       cout<<" - "<<runFor<<"] "<<" Run job "<<jobNum<<" (Arrive at = "<<AT<<")"<<endl;
         
     }
 }
