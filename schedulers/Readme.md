@@ -1,6 +1,6 @@
 # Overview
 
-This program, scheduler.py, allows you to see how different schedulers perform
+This program, allows you to see how different schedulers perform
 under scheduling metrics such as response time, turnaround time, and total
 wait time. Three schedulers are "implemented": FIFO, SJF, and RR.
 
