@@ -97,6 +97,7 @@ void FIFO(const vector<pair<int,string>>& jobList,const vector<pair<int,string>>
 void RR(const vector<pair<int,string>>& jobList,const vector<pair<int,string>>& arrive,vector<float>& Response,vector<float>& Turnaround,vector<float>& Wait,int quantum){
     
     queue<pair<int,int>> readyQ;
+    vector<int> jobLength(jobList.size(),0);
     int runFor=0 , AT=0 , count=1 , firstJob=jobList[0].first;
     
     if(arrive.size() != 0) runFor = stoi(arrive[firstJob].second);
@@ -113,6 +114,7 @@ void RR(const vector<pair<int,string>>& jobList,const vector<pair<int,string>>& 
         readyQ.pop();
     
         if(arrive.size() != 0) AT = stoi(arrive[jobNum].second);
+        if(jobLength[jobNum] == 0) jobLength[jobNum] = runtime;
         if(Response[jobNum] == -1) Response[jobNum] = runFor - AT; // 1st cpu access - arrival
         
         cout<<"  [time  "<<runFor;
@@ -125,7 +127,7 @@ void RR(const vector<pair<int,string>>& jobList,const vector<pair<int,string>>& 
             runFor += runtime;
             runtime = 0;
             Turnaround[jobNum] = runFor - AT; // completion - arrival
-            Wait[jobNum] = (runFor - AT) - stoi(jobList[jobNum].second); // TAT - jobRuntime
+            Wait[jobNum] = (runFor - AT) - jobLength[jobNum]; // TAT - jobLength
         }
         
         for(int i=count; i<jobList.size();){
