@@ -1,8 +1,6 @@
+# Overview
 
-This program, allows you to see how the MLFQ scheduler behaves. 
-As before, you can use this to generate problems for yourself 
-using random seeds, or use it to construct a carefully-designed 
-experiment to see how MLFQ works under different circumstances. 
+This program, allows you to see how the MLFQ scheduler behaves.  
 To run the program, type:
 
 ```sh
