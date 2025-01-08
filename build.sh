@@ -30,6 +30,10 @@ case $1 in
        shift 1 # Remove the first argument (scheduler)
        build_run "schedulers" "scheduler.cpp" "scheduler" "$@"
        ;;
+     "mlfq")
+       shift 1
+       build_run "mlfq" "mlfq.cpp" "mlfq" "$@"
+       ;;
     *)
        echo "Unknown file: $1"
        ;;
