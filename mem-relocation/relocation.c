@@ -104,7 +104,7 @@ int main(int argc, char *argv[]) {
        int done = 0;
        while(!done){
           new_base = (int)(new_psize*(rand()/(RAND_MAX + 1.0)));
-          if(new_base + new_limit <= new_psize) done = 1;
+          if(new_base + new_limit < new_psize) done = 1;
        }
     }
     else if(new_base + new_limit >= new_psize) {
