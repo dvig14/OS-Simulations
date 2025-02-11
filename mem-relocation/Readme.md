@@ -7,13 +7,6 @@ run without the -c flag to generate a set of translations and see if you can
 correctly perform the address translations yourself. Then, when done, run with
 the -c flag to check your answers.
 
-In this homework, we will assume a slightly different address space than our
-canonical one with a heap and stack at opposite ends of the space. Rather, we
-will assume that the address space has a code section, then a fixed-sized
-(small) stack, and a heap that grows downward right after, looking something
-like you see in the Figure below. In this configuration, there is only one
-direction of growth, towards higher regions of the address space.
-
 ```sh
   -------------- 0KB
   |    Code    |
@@ -57,7 +50,7 @@ translates to OR write down that it is an out-of-bounds address
 (a segmentation violation). For this problem, you should assume a 
 simple virtual address space of a given size.
 
-As you can see, the homework simply generates randomized virtual
+As you can see, this simply generates randomized virtual
 addresses. For each, you should determine whether it is in bounds, and if so,
 determine to which physical address it translates. Running with -c (the
 "compute this for me" flag) gives us the results of these translations, i.e.,
@@ -75,10 +68,10 @@ Virtual Address Trace
   VA  4: 0x00000157 (decimal 343) -> VALID: 00001a94 (dec:6804)
 ```
 
-With a base address of 12418 (decimal), address 430 is within bounds (i.e., it
-is less than the limit register of 472) and thus translates to 430 added to
-12418 or 12848. A few of the addresses shown above are out of bounds (523,
-802), as they are in excess of the bounds. Pretty simple, no? Indeed, that is
+With a base address of 6461 (decimal), address 343 is within bounds (i.e., it
+is less than the limit register of 471) and thus translates to 343 added to
+6461 or 6663. A few of the addresses shown above are out of bounds (933,
+801), as they are in excess of the bounds. Pretty simple, no? Indeed, that is
 one of the beauties of base and bounds: it's so darn simple!
 
 There are a few flags you can use to control what's going on better:
