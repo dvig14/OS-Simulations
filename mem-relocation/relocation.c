@@ -107,7 +107,7 @@ int main(int argc, char *argv[]) {
           if(new_base + new_limit < new_psize) done = 1;
        }
     }
-    else if(new_base + new_limit >= new_psize) {
+    else if(new_base + new_limit > new_psize) {
         error_msg("address space does not fit into physical memory with those base/bounds values.");
         printf("Base + Limit: %i\tPsize: %i",new_base + new_limit,new_psize);
         return 0;
